@@ -53,8 +53,9 @@ const Main = (
 
     useEffect(() => {
         getPosts();
-    });
-
+        console.log(334)
+    }, [getPosts]);
+    console.log(load)
     return <div>
         <Row>
             <Col span={18}>
@@ -66,7 +67,9 @@ const Main = (
                         const {id}: any = record;
                         return {
                             onMouseEnter: event => {
-                                getComments(id);
+                                if(!load){
+                                    getComments(id);
+                                }
                             },
                             onClick: event => {
                                 history.push(`/post/${id}`);
